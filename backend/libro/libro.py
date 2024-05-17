@@ -1,14 +1,25 @@
 from fastapi import FastAPI, HTTPException
 import mysql.connector
 import schemas
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-host_name = "database-2.cbekimjprojv.us-east-1.rds.amazonaws.com"
-port_number = "3306"
-user_name = "admin2"
-password_db = "CC-utec_2024-s3"
-database_name = "bd_api_libro"  
+# Configuración CORS
+origins = [
+    "http://localhost:3000",
+    "http://3.90.116.170", # Para desarrollo local de React
+    "http://3.90.116.170"     # IP pública de tu servidor (puedes agregar otros dominios permitidos según sea$
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Obtener todos los libros
 @app.get("/libros")

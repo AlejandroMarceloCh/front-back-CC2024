@@ -1,9 +1,26 @@
 import axios from 'axios';
 
-const api = axios.create({
-    baseURL: '3.90.116.170'
+// Configuración para la API de libros
+const librosApi = axios.create({
+    baseURL: 'http://3.90.116.170:8001'
 });
 
-export const registerUser = (userData) => api.post('/usuarios', userData);
-export const searchBooks = (query) => api.get(`/libros/${query}`);
-export const getAllBooks = () => api.get('/libros');
+// Configuración para la API de préstamos
+const prestamosApi = axios.create({
+    baseURL: 'http://3.90.116.170:8002'
+});
+
+// Configuración para la API de usuarios
+const usuariosApi = axios.create({
+    baseURL: 'http://3.90.116.170:8003'
+});
+
+// Funciones para la API de libros
+export const getAllBooks = () => librosApi.get('/libros');
+export const searchBooks = (query) => librosApi.get(`/libros/${query}`);
+
+// Funciones para la API de préstamos
+export const addPrestamo = (prestamoData) => prestamosApi.post('/prestamos', prestamoData);
+
+// Funciones para la API de usuarios
+export const registerUser = (userData) => usuariosApi.post('/usuarios', userData);

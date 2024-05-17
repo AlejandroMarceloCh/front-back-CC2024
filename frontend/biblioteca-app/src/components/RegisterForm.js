@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { registerUser } from '../api';
 
 const RegisterForm = () => {
     const [formData, setFormData] = useState({
@@ -22,8 +22,8 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://3.90.116.170:8003/usuarios', formData); //tengo que ver la manera de tener la maquina virtual con ip elastica para poder conectarme a ella//listo
-            alert('User registered successfully!');
+            await registerUser(formData);
+            alert('User registered successfully');
         } catch (error) {
             alert('Error registering user');
         }
@@ -31,12 +31,13 @@ const RegisterForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" name="username" placeholder="Username" onChange={handleChange} />
-            <input type="text" name="nombre" placeholder="Nombre" onChange={handleChange} />
-            <input type="text" name="sexo" placeholder="Sexo" onChange={handleChange} />
-            <input type="email" name="correo" placeholder="Correo" onChange={handleChange} />
-            <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" onChange={handleChange} />
-            <input type="text" name="direccion" placeholder="Dirección" onChange={handleChange} />
+            <h1>Register</h1>
+            <input name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
+            <input name="nombre" value={formData.nombre} onChange={handleChange} placeholder="Nombre" />
+            <input name="sexo" value={formData.sexo} onChange={handleChange} placeholder="Sexo" />
+            <input name="correo" value={formData.correo} onChange={handleChange} placeholder="Correo" />
+            <input name="fecha_nacimiento" value={formData.fecha_nacimiento} onChange={handleChange} placeholder="Fecha de Nacimiento" />
+            <input name="direccion" value={formData.direccion} onChange={handleChange} placeholder="Direccion" />
             <button type="submit">Register</button>
         </form>
     );

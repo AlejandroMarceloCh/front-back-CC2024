@@ -1,8 +1,25 @@
 from fastapi import FastAPI, HTTPException
 import mysql.connector
 import schemas
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Configuración CORS
+origins = [
+    "http://localhost:3000",
+    "http://3.90.116.170", # Para desarrollo local de React
+    "http://3.90.116.170"     # IP pública de tu servidor (puedes agregar otros dominios permitidos según sea$
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Configuración para conectarse a las bases de datos RDS
 db_config = {
