@@ -19,6 +19,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+host_name = "database-2.cbekimjprojv.us-east-1.rds.amazonaws.com"
+port_number = "3306"
+user_name = "admin2"
+password_db = "CC-utec_2024-s3"
+database_name = "bd_api_libro"  
 
 
 # Obtener todos los libros
@@ -49,7 +54,7 @@ def get_libro(id: int):
 def buscar_libros_por_titulo(titulo: str):
     mydb = mysql.connector.connect(host=host_name, port=port_number, user=user_name, password=password_db, database=database_name)  
     cursor = mydb.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM libros WHERE titulo LIKE %s AND disponible = 1", ('%' + titulo + '%',))
+    cursor.execute("SELECT * FROM libros WHERE titulo LIKE %s ", ('%' + titulo + '%',))
     result = cursor.fetchall()
     mydb.close()
     return {"libros": result}
