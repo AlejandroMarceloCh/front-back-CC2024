@@ -11,7 +11,7 @@ services:
       DB_PORT: 3306
       DB_USER: admin2
       DB_PASS: CC-utec_2024-s3
-      DB_NAME: bd_kapi_libro
+      DB_NAME: bd_api_libro
 
   prestamo:
     build: ./prestamo
@@ -36,3 +36,9 @@ services:
       DB_USER: admin2
       DB_PASS: CC-utec_2024-s3
       DB_NAME: bd_api_usuario
+
+  frontend:
+    build: ./frontend/biblioteca-app
+    image: alejandromarcelo/frontend
+    ports:
+      - "3000:80"
