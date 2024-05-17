@@ -7,7 +7,6 @@ const Books = () => {
     return (
         <div>
             <NavBar />
-            <h1>Books</h1>
             <BookSearch />
             <BookList />
         </div>

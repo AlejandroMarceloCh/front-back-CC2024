@@ -1,26 +1,44 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { getAllBooks, searchBooks } from '../api';
 
 const BookSearch = () => {
-    const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
+    const [books, setBooks] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        const fetchBooks = async () => {
+            try {
+                const response = await getAllBooks();
+                setBooks(response.data.libros);
+            } catch (error) {
+                alert('Error fetching books');
+            }
+        };
+        fetchBooks();
+    }, []);
 
     const handleSearch = async () => {
         try {
-            const response = await axios.get(`http://3.90.116.170/libros/${query}`);
-            setResults(response.data.libros);
+            const response = await searchBooks(searchTerm);
+            setBooks(response.data.libros);
         } catch (error) {
-            alert('Error searching books');
+            alert('Error fetching books');
         }
     };
 
     return (
         <div>
-            <input type="text" placeholder="Search for books" onChange={(e) => setQuery(e.target.value)} />
+            <h1>Books</h1>
+            <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search for books"
+            />
             <button onClick={handleSearch}>Search</button>
             <ul>
-                {results.map((book) => (
-                    <li key={book.id}>{book.titulo}</li>
+                {books.map((book) => (
+                    <li key={book.id}>{book.titulo} by {book.autor}</li>
                 ))}
             </ul>
         </div>
