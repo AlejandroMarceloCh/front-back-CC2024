@@ -6,11 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 # Configuración CORS
-origins = [
-    "http://localhost:3000",
-    "http://3.90.116.170", # Para desarrollo local de React
-    "http://3.90.116.170"     # IP pública de tu servidor (puedes agregar otros dominios permitidos según sea$
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
