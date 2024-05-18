@@ -1,19 +1,22 @@
-# Etapa de build
-FROM node:16-alpine as build
 
+# Utilizar una imagen base de Node.js
+FROM node:18
+
+# Crear y establecer el directorio de trabajo
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+# Copiar el archivo package.json y package-lock.json
+COPY package*.json ./
+
+# Instalar dependencias
 RUN npm install
 
-COPY . ./
-RUN npm run build
+# Copiar todo el código fuente a la imagen
+COPY . .
 
-# Etapa de producción
-FROM nginx:alpine
+# Exponer el puerto que utiliza la aplicación (por defecto 3000 para React)
+EXPOSE 3000
 
-COPY --from=build /app/build /usr/share/nginx/html
+# Comando para iniciar la aplicación en modo desarrollo
+CMD ["npm", "start"]
 
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]

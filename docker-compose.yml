@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   libro:
-    build: ./libro
+    build: ./backend/libro
     image: alejandromarcelo/libro
     ports:
       - "8001:8000"
@@ -14,7 +14,7 @@ services:
       DB_NAME: bd_api_libro
 
   prestamo:
-    build: ./prestamo
+    build: ./backend/prestamo
     image: alejandromarcelo/prestamo
     ports:
       - "8002:8000"
@@ -26,7 +26,7 @@ services:
       DB_NAME: bd_api_prestamo
 
   usuario:
-    build: ./usuario
+    build: ./backend/usuario
     image: alejandromarcelo/usuario
     ports:
       - "8003:8000"
@@ -38,7 +38,13 @@ services:
       DB_NAME: bd_api_usuario
 
   frontend:
-    build: ./frontend/biblioteca-app
-    image: alejandromarcelo/frontend
+    build:
+      context: ./frontend/biblioteca-app
+      dockerfile: Dockerfile
     ports:
-      - "3000:80"
+      - "3000:3000"
+    volumes:
+      - ./frontend/biblioteca-app:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
