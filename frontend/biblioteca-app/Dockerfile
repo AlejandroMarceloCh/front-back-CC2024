@@ -17,6 +17,8 @@ COPY . .
 # Exponer el puerto que utiliza la aplicación (por defecto 3000 para React)
 EXPOSE 3000
 
+ENV HOST 0.0.0.0
+
 # Comando para iniciar la aplicación en modo desarrollo
 CMD ["npm", "start"]
 
