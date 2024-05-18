@@ -2,17 +2,17 @@ import axios from 'axios';
 
 // Configuración para la API de libros
 const librosApi = axios.create({
-    baseURL: 'http://3.90.116.170:8001'
+    baseURL: 'http://44.202.169.243:8001'
 });
 
 // Configuración para la API de préstamos
 const prestamosApi = axios.create({
-    baseURL: 'http://3.90.116.170:8002'
+    baseURL: 'http://44.202.169.243:8002'
 });
 
 // Configuración para la API de usuarios
 const usuariosApi = axios.create({
-    baseURL: 'http://3.90.116.170:8003'
+    baseURL: 'http://44.202.169.243:8003'
 });
 
 // Funciones para la API de libros
