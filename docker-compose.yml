@@ -1,9 +1,24 @@
 version: "3.3"
 
 services:
+  frontend:
+    build:
+      context: ./frontend/biblioteca-app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend/biblioteca-app:/app:cached
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+
   libro:
-    build: ./backend/libro
-    image: alejandromarcelo/libro
+    build:
+      context: ./backend/libro
     ports:
       - "8001:8000"
     environment:
@@ -14,8 +29,8 @@ services:
       DB_NAME: bd_api_libro
 
   prestamo:
-    build: ./backend/prestamo
-    image: alejandromarcelo/prestamo
+    build:
+      context: ./backend/prestamo
     ports:
       - "8002:8000"
     environment:
@@ -26,8 +41,8 @@ services:
       DB_NAME: bd_api_prestamo
 
   usuario:
-    build: ./backend/usuario
-    image: alejandromarcelo/usuario
+    build:
+      context: ./backend/usuario
     ports:
       - "8003:8000"
     environment:
@@ -37,14 +52,4 @@ services:
       DB_PASS: CC-utec_2024-s3
       DB_NAME: bd_api_usuario
 
-  frontend:
-    build:
-      context: ./frontend/biblioteca-app
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend/biblioteca-app:/app
-      - /app/node_modules
-    environment:
-      - CHOKIDAR_USEPOLLING=true
+
