@@ -25,7 +25,6 @@ const BookList = () => {
                     <tr>
                         <th>Título</th>
                         <th>Autor</th>
-                        <th>Año</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +32,6 @@ const BookList = () => {
                         <tr key={book.id}>
                             <td className="book-title">{book.titulo}</td>
                             <td className="book-author">{book.autor}</td>
-                            <td>{book.año}</td>
                         </tr>
                     ))}
                 </tbody>

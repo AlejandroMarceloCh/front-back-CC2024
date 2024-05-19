@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/Home'; // Asegúrate de importar el componente Home
+import Home from './pages/Home';
 import Biblioteca from './pages/Biblioteca';
-import Prestamos from './pages/Prestamos'; // Asegúrate de tener esta página también
+import Prestamos from './pages/Prestamos';
 import Usuarios from './pages/Usuarios';
 import './styles/App.css';
 

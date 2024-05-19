@@ -3,7 +3,6 @@ import LibraryOption from '../components/LibraryOption';
 import BookList from '../components/BookList';
 import BookSearch from '../components/BookSearch';
 import RegisterBook from '../components/RegisterBook';
-import RegisterUser from '../components/RegisterUser';
 import '../styles/Biblioteca.css';
 
 const Biblioteca = () => {
