@@ -1,24 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './pages/Home';
-import Register from './pages/Register';
-import RegisterBookForm from './components/RegisterBookForm'; 
-import Books from './pages/Books';
-import UserList from './components/UserList';
-import LoanList from './components/LoanList';
-import NavBar from './components/NavBar';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Biblioteca from './pages/Biblioteca';
+import './styles/App.css';
 
 const App = () => {
     return (
         <Router>
-            <NavBar />
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/register" component={Register} />
-                <Route path="/books" component={Books} />
-                <Route path="/users" component={UserList} /> 
-                <Route path="/register-book" component={RegisterBookForm} />
-            </Switch>
+            <div className="app">
+                <nav className="navbar">
+                    <Link to="/">Home</Link>
+                    <Link to="/biblioteca">Biblioteca</Link>
+                    <Link to="/prestamos">Préstamos</Link>
+                    <Link to="/usuarios">Usuarios</Link>
+                </nav>
+                <Switch>
+                    <Route path="/" exact component={() => <h1>Bienvenido a la Biblioteca UTEC</h1>} />
+                    <Route path="/biblioteca" component={Biblioteca} />
+                    {/* Aquí irán las otras rutas de Préstamos y Usuarios */}
+                </Switch>
+            </div>
         </Router>
     );
 };

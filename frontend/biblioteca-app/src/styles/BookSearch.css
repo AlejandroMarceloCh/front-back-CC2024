@@ -1,0 +1,40 @@
+.book-search-container {
+    margin: 20px 0;
+}
+
+.book-search-container input {
+    padding: 10px;
+    width: 70%;
+    margin-right: 10px;
+}
+
+.book-search-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book-search-container button:hover {
+    background-color: #0056b3;
+}
+
+.book-search-results {
+    list-style: none;
+    padding: 0;
+}
+
+.book-search-results li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.book-title {
+    font-weight: bold;
+}
+
+.book-author {
+    color: #555;
+}

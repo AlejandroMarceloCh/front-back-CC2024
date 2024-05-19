@@ -1,0 +1,34 @@
+.register-book-container {
+    margin: 20px 0;
+}
+
+.register-book-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-book-container input,
+.register-book-container textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.register-book-container button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-book-container button:hover {
+    background-color: #218838;
+}
+
+.register-message {
+    margin-top: 10px;
+    color: #28a745;
+}
