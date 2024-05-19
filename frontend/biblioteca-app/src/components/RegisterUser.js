@@ -3,7 +3,15 @@ import { registerUser } from '../api/api';
 import '../styles/RegisterUser.css';
 
 const RegisterUser = ({ onFixChange }) => {
-    const [userData, setUserData] = useState({ nombre: '', correo: '', contrasena: '' });
+    const [userData, setUserData] = useState({ 
+        username: '', 
+        nombre: '', 
+        sexo: '', 
+        correo: '', 
+        fecha_nacimiento: '', 
+        direccion: '', 
+        contrasena: '' 
+    });
     const [message, setMessage] = useState('');
 
     const handleChange = (e) => {
@@ -16,7 +24,15 @@ const RegisterUser = ({ onFixChange }) => {
         try {
             await registerUser(userData);
             setMessage('Usuario registrado exitosamente');
-            setUserData({ nombre: '', correo: '', contrasena: '' });
+            setUserData({ 
+                username: '', 
+                nombre: '', 
+                sexo: '', 
+                correo: '', 
+                fecha_nacimiento: '', 
+                direccion: '', 
+                contrasena: '' 
+            });
             onFixChange(false); // Desactivar el modo "fijo"
         } catch (error) {
             alert('Error registrando usuario');
@@ -28,10 +44,26 @@ const RegisterUser = ({ onFixChange }) => {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
+                    name="username"
+                    value={userData.username}
+                    onChange={handleChange}
+                    placeholder="Nombre de usuario"
+                    onFocus={() => onFixChange(true)} // Activar el modo "fijo"
+                />
+                <input
+                    type="text"
                     name="nombre"
                     value={userData.nombre}
                     onChange={handleChange}
                     placeholder="Nombre"
+                    onFocus={() => onFixChange(true)} // Activar el modo "fijo"
+                />
+                <input
+                    type="text"
+                    name="sexo"
+                    value={userData.sexo}
+                    onChange={handleChange}
+                    placeholder="Sexo"
                     onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <input
@@ -40,6 +72,22 @@ const RegisterUser = ({ onFixChange }) => {
                     value={userData.correo}
                     onChange={handleChange}
                     placeholder="Correo"
+                    onFocus={() => onFixChange(true)} // Activar el modo "fijo"
+                />
+                <input
+                    type="date"
+                    name="fecha_nacimiento"
+                    value={userData.fecha_nacimiento}
+                    onChange={handleChange}
+                    placeholder="Fecha de nacimiento"
+                    onFocus={() => onFixChange(true)} // Activar el modo "fijo"
+                />
+                <input
+                    type="text"
+                    name="direccion"
+                    value={userData.direccion}
+                    onChange={handleChange}
+                    placeholder="Dirección"
                     onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <input
