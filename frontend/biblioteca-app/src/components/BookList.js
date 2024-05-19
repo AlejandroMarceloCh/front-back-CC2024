@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllBooks } from '../api/api';
+import axios from 'axios';
 import '../styles/BookList.css';
 
 const BookList = () => {
@@ -8,7 +8,7 @@ const BookList = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await getAllBooks();
+                const response = await axios.get('http://34.203.174.121:8001/libros');
                 setBooks(response.data.libros);
             } catch (error) {
                 alert('Error fetching books');
@@ -19,24 +19,26 @@ const BookList = () => {
     }, []);
 
     return (
-        <table className="book-table">
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Autor</th>
-                    <th>Año</th>
-                </tr>
-            </thead>
-            <tbody>
-                {books.map((book) => (
-                    <tr key={book.id}>
-                        <td>{book.titulo}</td>
-                        <td>{book.autor}</td>
-                        <td>{book.ano}</td>
+        <div className="book-list-container">
+            <table className="book-table">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Año</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {books.map((book) => (
+                        <tr key={book.id}>
+                            <td className="book-title">{book.titulo}</td>
+                            <td className="book-author">{book.autor}</td>
+                            <td>{book.año}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     );
 };
 

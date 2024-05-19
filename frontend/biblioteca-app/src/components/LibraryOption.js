@@ -13,7 +13,7 @@ const LibraryOption = ({ imageSrc, children, flipped, onFlip }) => {
                         {children}
                         {flipped && (
                             <button className="flip-back-button" onClick={onFlip}>
-                                <img src="/images/arrow.png" alt="Voltear" />
+                                <img src="/images/flechita.png" alt="Voltear" />
                             </button>
                         )}
                     </div>
@@ -24,4 +24,3 @@ const LibraryOption = ({ imageSrc, children, flipped, onFlip }) => {
 };
 
 export default LibraryOption;
-

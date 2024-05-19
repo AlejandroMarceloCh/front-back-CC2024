@@ -3,6 +3,7 @@ import LibraryOption from '../components/LibraryOption';
 import BookList from '../components/BookList';
 import BookSearch from '../components/BookSearch';
 import RegisterBook from '../components/RegisterBook';
+import RegisterUser from '../components/RegisterUser';
 import '../styles/Biblioteca.css';
 
 const Biblioteca = () => {
@@ -18,10 +19,10 @@ const Biblioteca = () => {
             <div className="biblioteca-options">
                 <LibraryOption
                     imageSrc="/images/RegisterBook.jpg"
-                    flipped={fixedOption === 'register'}
-                    onFlip={() => handleFlip('register')}
+                    flipped={fixedOption === 'registerBook'}
+                    onFlip={() => handleFlip('registerBook')}
                 >
-                    <RegisterBook onFixChange={(fix) => setFixedOption(fix ? 'register' : null)} />
+                    <RegisterBook onFixChange={(fix) => setFixedOption(fix ? 'registerBook' : null)} />
                 </LibraryOption>
                 <LibraryOption
                     imageSrc="/images/BookByTitle.jpeg"
@@ -36,6 +37,13 @@ const Biblioteca = () => {
                     onFlip={() => handleFlip('list')}
                 >
                     <BookList />
+                </LibraryOption>
+                <LibraryOption
+                    imageSrc="/images/RegisterUser.jpg"  // Usa la imagen correspondiente
+                    flipped={fixedOption === 'registerUser'}
+                    onFlip={() => handleFlip('registerUser')}
+                >
+                    <RegisterUser onFixChange={(fix) => setFixedOption(fix ? 'registerUser' : null)} />
                 </LibraryOption>
             </div>
         </div>
