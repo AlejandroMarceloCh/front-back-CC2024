@@ -16,7 +16,7 @@ const Prestamos = () => {
             <h1>Gestión de Préstamos</h1>
             <div className="prestamos-options">
                 <LibraryOption
-                    imageSrc="/images/RegisterLoan.jpg"
+                    imageSrc="/images/RegisterLoan.jpeg"
                     flipped={fixedOption === 'registerLoan'}
                     onFlip={() => handleFlip('registerLoan')}
                 >
