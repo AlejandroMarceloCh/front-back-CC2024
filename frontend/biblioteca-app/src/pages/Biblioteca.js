@@ -8,28 +8,32 @@ import '../styles/Biblioteca.css';
 const Biblioteca = () => {
     const [fixedOption, setFixedOption] = useState(null);
 
+    const handleFlip = (option) => {
+        setFixedOption(fixedOption === option ? null : option);
+    };
+
     return (
         <div className="biblioteca-container">
             <h1>Biblioteca UTEC</h1>
             <div className="biblioteca-options">
                 <LibraryOption
-                    imageSrc="images/RegisterBook.jpg"
-                    isFixed={fixedOption === 'register'}
-                    onFixChange={(fix) => setFixedOption(fix ? 'register' : null)}
+                    imageSrc="/images/RegisterBook.jpg"
+                    flipped={fixedOption === 'register'}
+                    onFlip={() => handleFlip('register')}
                 >
                     <RegisterBook />
                 </LibraryOption>
                 <LibraryOption
-                    imageSrc="images/BookByTitle.jpeg"
-                    isFixed={fixedOption === 'search'}
-                    onFixChange={(fix) => setFixedOption(fix ? 'search' : null)}
+                    imageSrc="/images/BookByTitle.jpeg"
+                    flipped={fixedOption === 'search'}
+                    onFlip={() => handleFlip('search')}
                 >
                     <BookSearch />
                 </LibraryOption>
                 <LibraryOption
-                    imageSrc="images/DisplayAllBooks.jpeg"
-                    isFixed={fixedOption === 'list'}
-                    onFixChange={(fix) => setFixedOption(fix ? 'list' : null)}
+                    imageSrc="/images/DisplayBooks.jpeg"
+                    flipped={fixedOption === 'list'}
+                    onFlip={() => handleFlip('list')}
                 >
                     <BookList />
                 </LibraryOption>

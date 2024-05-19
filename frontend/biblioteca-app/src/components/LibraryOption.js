@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/LibraryOption.css';
 
-const LibraryOption = ({ imageSrc, children, isFixed, onFixChange }) => {
-    const [flipped, setFlipped] = useState(false);
-
+const LibraryOption = ({ imageSrc, children, flipped, onFlip }) => {
     const handleClick = () => {
-        if (!isFixed) {
-            setFlipped(!flipped);
-            onFixChange(!flipped); // Cambiar el estado de "fijo"
+        if (!flipped) {
+            onFlip();
         }
     };
 
@@ -20,9 +17,11 @@ const LibraryOption = ({ imageSrc, children, isFixed, onFixChange }) => {
                 <div className="library-option-back" onClick={(e) => e.stopPropagation()}>
                     <div className="back-content">
                         {children}
-                        <button className="flip-back-button" onClick={handleClick}>
-                            <img src="images/flechita.png"alt="Voltear" />
-                        </button>
+                        {flipped && (
+                            <button className="flip-back-button" onClick={onFlip}>
+                                <img src="/images/flechita.png" alt="Voltear" />
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
