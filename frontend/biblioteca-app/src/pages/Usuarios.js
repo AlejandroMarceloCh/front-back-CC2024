@@ -16,7 +16,7 @@ const Usuarios = () => {
             <h1>Gestión de Usuarios</h1>
             <div className="usuarios-options">
                 <LibraryOption
-                    imageSrc="/images/RegisterUser.jpeg"
+                    imageSrc="images/RegisterUser.jpeg"
                     flipped={fixedOption === 'registerUser'}
                     onFlip={() => handleFlip('registerUser')}
                 >

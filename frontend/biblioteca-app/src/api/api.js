@@ -24,7 +24,6 @@ export const registerBook = (bookData) => librosApi.post('/libros', bookData);
 export const addPrestamo = (prestamoData) => prestamosApi.post('/prestamos', prestamoData);
 export const getAllLoans = () => prestamosApi.get('/prestamos');
 
-
 // Funciones para la API de usuarios
-export const registerUser = (userData) => usuariosApi.post('/usuarios', userData);
+export const registerUser = (userData) => usuariosApi.post('/usuarios', userData);   
 export const getAllUsers = () => usuariosApi.get('/usuarios');

@@ -3,7 +3,12 @@ import { addPrestamo } from '../api/api';
 import '../styles/RegisterLoan.css';
 
 const RegisterLoan = ({ onFixChange }) => {
-    const [loanData, setLoanData] = useState({ libroId: '', usuarioId: '', fechaPrestamo: '', fechaDevolucion: '' });
+    const [loanData, setLoanData] = useState({
+        libro_id: '',
+        usuario_username: '',
+        fecha_inicio: '',
+        fecha_fin: ''
+    });
     const [message, setMessage] = useState('');
 
     const handleChange = (e) => {
@@ -16,7 +21,7 @@ const RegisterLoan = ({ onFixChange }) => {
         try {
             await addPrestamo(loanData);
             setMessage('Préstamo registrado exitosamente');
-            setLoanData({ libroId: '', usuarioId: '', fechaPrestamo: '', fechaDevolucion: '' });
+            setLoanData({ libro_id: '', usuario_username: '', fecha_inicio: '', fecha_fin: '' });
             onFixChange(false); // Desactivar el modo "fijo"
         } catch (error) {
             alert('Error registrando préstamo');
@@ -28,34 +33,34 @@ const RegisterLoan = ({ onFixChange }) => {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    name="libroId"
-                    value={loanData.libroId}
+                    name="libro_id"
+                    value={loanData.libro_id}
                     onChange={handleChange}
                     placeholder="ID del Libro"
                     onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <input
                     type="text"
-                    name="usuarioId"
-                    value={loanData.usuarioId}
+                    name="usuario_username"
+                    value={loanData.usuario_username}
                     onChange={handleChange}
-                    placeholder="ID del Usuario"
+                    placeholder="Nombre de Usuario"
                     onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <input
                     type="date"
-                    name="fechaPrestamo"
-                    value={loanData.fechaPrestamo}
+                    name="fecha_inicio"
+                    value={loanData.fecha_inicio}
                     onChange={handleChange}
-                    placeholder="Fecha de Préstamo"
+                    placeholder="Fecha de Inicio"
                     onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <input
                     type="date"
-                    name="fechaDevolucion"
-                    value={loanData.fechaDevolucion}
+                    name="fecha_fin"
+                    value={loanData.fecha_fin}
                     onChange={handleChange}
-                    placeholder="Fecha de Devolución"
+                    placeholder="Fecha de Fin"
                     onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <button type="submit">Registrar Préstamo</button>

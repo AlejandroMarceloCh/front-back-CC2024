@@ -6,7 +6,8 @@ CREATE TABLE prestamos (
     id INT(11) NOT NULL AUTO_INCREMENT,
     usuario_username VARCHAR(50) NOT NULL,
     libro_id INT(11) NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL,
     estado ENUM('activo', 'inactivo') NOT NULL DEFAULT 'activo',
     PRIMARY KEY (id)
 );
-

@@ -1,5 +1,10 @@
 from pydantic import BaseModel
-class Item(BaseModel):
+from typing import Optional
+from datetime import date
+
+class Prestamo(BaseModel):
     usuario_username: str
     libro_id: int
-    estado: str
+    fecha_inicio: date
+    fecha_fin: date
+    estado: Optional[str] = "activo"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllLoans } from '../api/api';
+import axios from 'axios';
 import '../styles/LoanList.css';
 
 const LoanList = () => {
@@ -8,7 +8,8 @@ const LoanList = () => {
     useEffect(() => {
         const fetchLoans = async () => {
             try {
-                const response = await getAllLoans();
+                const response = await axios.get('http://34.203.174.121:8002/prestamos');
+                console.log('Loans data:', response.data.prestamos); // Log para verificar datos
                 setLoans(response.data.prestamos);
             } catch (error) {
                 alert('Error fetching loans');
@@ -24,20 +25,22 @@ const LoanList = () => {
                 <thead>
                     <tr>
                         <th>ID Préstamo</th>
+                        <th>Nombre de Usuario</th>
                         <th>ID Libro</th>
-                        <th>ID Usuario</th>
-                        <th>Fecha Préstamo</th>
-                        <th>Fecha Devolución</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Fin</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
                     {loans.map((loan) => (
                         <tr key={loan.id}>
                             <td>{loan.id}</td>
-                            <td>{loan.libroId}</td>
-                            <td>{loan.usuarioId}</td>
-                            <td>{loan.fechaPrestamo}</td>
-                            <td>{loan.fechaDevolucion}</td>
+                            <td>{loan.usuario_username}</td>
+                            <td>{loan.libro_id}</td>
+                            <td>{loan.fecha_inicio}</td>
+                            <td>{loan.fecha_fin}</td>
+                            <td>{loan.estado}</td>
                         </tr>
                     ))}
                 </tbody>
