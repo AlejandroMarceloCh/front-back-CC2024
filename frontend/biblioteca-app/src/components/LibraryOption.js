@@ -2,14 +2,8 @@ import React from 'react';
 import '../styles/LibraryOption.css';
 
 const LibraryOption = ({ imageSrc, children, flipped, onFlip }) => {
-    const handleClick = () => {
-        if (!flipped) {
-            onFlip();
-        }
-    };
-
     return (
-        <div className={`library-option ${flipped ? 'flipped' : ''}`} onClick={handleClick}>
+        <div className={`library-option ${flipped ? 'flipped' : ''}`} onClick={onFlip}>
             <div className="library-option-inner">
                 <div className="library-option-front">
                     <img src={imageSrc} alt="Library Option" />
@@ -19,7 +13,7 @@ const LibraryOption = ({ imageSrc, children, flipped, onFlip }) => {
                         {children}
                         {flipped && (
                             <button className="flip-back-button" onClick={onFlip}>
-                                <img src="/images/flechita.png" alt="Voltear" />
+                                <img src="/images/arrow.png" alt="Voltear" />
                             </button>
                         )}
                     </div>
@@ -30,3 +24,4 @@ const LibraryOption = ({ imageSrc, children, flipped, onFlip }) => {
 };
 
 export default LibraryOption;
+
