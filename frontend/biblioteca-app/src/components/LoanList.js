@@ -8,7 +8,7 @@ const LoanList = () => {
     useEffect(() => {
         const fetchLoans = async () => {
             try {
-                const response = await axios.get('http://34.203.174.121:8002/prestamos');
+                const response = await axios.get('http://54.205.170.99:8002/prestamos');
                 console.log('Loans data:', response.data.prestamos); // Log para verificar datos
                 setLoans(response.data.prestamos);
             } catch (error) {

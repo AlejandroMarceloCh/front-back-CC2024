@@ -8,7 +8,7 @@ const UserList = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://34.203.174.121:8003/usuarios');
+                const response = await axios.get('http://54.205.170.99:8003/usuarios');
                 setUsers(response.data.usuarios);
             } catch (error) {
                 alert('Error fetching users');
