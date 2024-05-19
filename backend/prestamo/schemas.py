@@ -7,4 +7,3 @@ class Prestamo(BaseModel):
     libro_id: int
     fecha_inicio: date
     fecha_fin: date
-    estado: Optional[str] = "activo"

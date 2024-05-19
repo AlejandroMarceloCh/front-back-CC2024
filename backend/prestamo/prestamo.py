@@ -99,10 +99,9 @@ def add_prestamo(item: schemas.Prestamo):
         libro_id = item.libro_id
         fecha_inicio = item.fecha_inicio
         fecha_fin = item.fecha_fin
-        estado = item.estado
         cursor = prestamo_db.cursor()
-        sql = "INSERT INTO prestamos (usuario_username, libro_id, fecha_inicio, fecha_fin, estado) VALUES (%s, %s, %s, %s, %s)"
-        val = (usuario_username, libro_id, fecha_inicio, fecha_fin, estado)
+        sql = "INSERT INTO prestamos (usuario_username, libro_id, fecha_inicio, fecha_fin) VALUES (%s, %s, %s, %s)"
+        val = (usuario_username, libro_id, fecha_inicio, fecha_fin)
         cursor.execute(sql, val)
         prestamo_db.commit()
         prestamo_db.close()
@@ -126,10 +125,9 @@ def update_prestamo(id: int, item: schemas.Prestamo):
         libro_id = item.libro_id
         fecha_inicio = item.fecha_inicio
         fecha_fin = item.fecha_fin
-        estado = item.estado
         cursor = mydb.cursor()
-        sql = "UPDATE prestamos SET usuario_username=%s, libro_id=%s, fecha_inicio=%s, fecha_fin=%s, estado=%s WHERE id=%s"
-        val = (usuario_username, libro_id, fecha_inicio, fecha_fin, estado, id)
+        sql = "UPDATE prestamos SET usuario_username=%s, libro_id=%s, fecha_inicio=%s, fecha_fin=%s"
+        val = (usuario_username, libro_id, fecha_inicio, fecha_fin, id)
         cursor.execute(sql, val)
         mydb.commit()
         mydb.close()

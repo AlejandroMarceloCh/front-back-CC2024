@@ -29,7 +29,6 @@ const LoanList = () => {
                         <th>ID Libro</th>
                         <th>Fecha de Inicio</th>
                         <th>Fecha de Fin</th>
-                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +39,6 @@ const LoanList = () => {
                             <td>{loan.libro_id}</td>
                             <td>{loan.fecha_inicio}</td>
                             <td>{loan.fecha_fin}</td>
-                            <td>{loan.estado}</td>
                         </tr>
                     ))}
                 </tbody>
