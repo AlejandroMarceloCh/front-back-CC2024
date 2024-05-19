@@ -13,21 +13,21 @@ const Biblioteca = () => {
             <h1>Biblioteca UTEC</h1>
             <div className="biblioteca-options">
                 <LibraryOption
-                    imageSrc="../public/images/RegisterBook.jpg"
+                    imageSrc="images/RegisterBook.jpg"
                     isFixed={fixedOption === 'register'}
                     onFixChange={(fix) => setFixedOption(fix ? 'register' : null)}
                 >
-                    <RegisterBook onFixChange={(fix) => setFixedOption(fix ? 'register' : null)} />
+                    <RegisterBook />
                 </LibraryOption>
                 <LibraryOption
-                    imageSrc="../public/images/BookByTitle.jpeg"
+                    imageSrc="images/BookByTitle.jpeg"
                     isFixed={fixedOption === 'search'}
                     onFixChange={(fix) => setFixedOption(fix ? 'search' : null)}
                 >
-                    <BookSearch onFixChange={(fix) => setFixedOption(fix ? 'search' : null)} />
+                    <BookSearch />
                 </LibraryOption>
                 <LibraryOption
-                    imageSrc="../public/images/DisplayAllBooks.jpeg"
+                    imageSrc="images/DisplayAllBooks.jpeg"
                     isFixed={fixedOption === 'list'}
                     onFixChange={(fix) => setFixedOption(fix ? 'list' : null)}
                 >

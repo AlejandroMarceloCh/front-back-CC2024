@@ -7,6 +7,7 @@ const LibraryOption = ({ imageSrc, children, isFixed, onFixChange }) => {
     const handleClick = () => {
         if (!isFixed) {
             setFlipped(!flipped);
+            onFixChange(!flipped); // Cambiar el estado de "fijo"
         }
     };
 
@@ -17,12 +18,12 @@ const LibraryOption = ({ imageSrc, children, isFixed, onFixChange }) => {
                     <img src={imageSrc} alt="Library Option" />
                 </div>
                 <div className="library-option-back" onClick={(e) => e.stopPropagation()}>
-                    {children}
-                    {isFixed && (
-                        <button className="flip-back-button" onClick={() => onFixChange(false)}>
-                            Voltear
+                    <div className="back-content">
+                        {children}
+                        <button className="flip-back-button" onClick={handleClick}>
+                            <img src="images/flechita.png"alt="Voltear" />
                         </button>
-                    )}
+                    </div>
                 </div>
             </div>
         </div>

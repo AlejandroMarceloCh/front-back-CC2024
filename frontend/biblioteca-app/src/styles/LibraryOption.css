@@ -47,16 +47,21 @@
     box-sizing: border-box;
 }
 
+.back-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .flip-back-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    margin-top: 10px;
+    background: none;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-.flip-back-button:hover {
-    background-color: #0056b3;
+.flip-back-button img {
+    width: 24px;
+    height: 24px;
 }
