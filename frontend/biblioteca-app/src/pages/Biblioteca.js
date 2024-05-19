@@ -21,14 +21,14 @@ const Biblioteca = () => {
                     flipped={fixedOption === 'register'}
                     onFlip={() => handleFlip('register')}
                 >
-                    <RegisterBook />
+                    <RegisterBook onFixChange={(fix) => setFixedOption(fix ? 'register' : null)} />
                 </LibraryOption>
                 <LibraryOption
                     imageSrc="/images/BookByTitle.jpeg"
                     flipped={fixedOption === 'search'}
                     onFlip={() => handleFlip('search')}
                 >
-                    <BookSearch />
+                    <BookSearch onFixChange={(fix) => setFixedOption(fix ? 'search' : null)} />
                 </LibraryOption>
                 <LibraryOption
                     imageSrc="/images/DisplayBooks.jpeg"

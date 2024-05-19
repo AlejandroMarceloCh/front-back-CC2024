@@ -14,7 +14,7 @@ const App = () => {
                     <Link to="/usuarios">Usuarios</Link>
                 </nav>
                 <Switch>
-                    <Route path="/" exact component={() => <h1>Bienvenido a la Biblioteca UTEC</h1>} />
+                    <Route path="/" exact component={() => <h1>DS BOOKCENTER</h1>} />
                     <Route path="/biblioteca" component={Biblioteca} />
                     {/* Aquí irán las otras rutas de Préstamos y Usuarios */}
                 </Switch>

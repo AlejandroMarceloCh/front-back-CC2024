@@ -17,7 +17,7 @@ const RegisterBook = ({ onFixChange }) => {
             await registerBook(bookData);
             setMessage('Libro registrado exitosamente');
             setBookData({ titulo: '', autor: '', descripcion: '', imagen: '' });
-            onFixChange(false); 
+            onFixChange(false); // Desactivar el modo "fijo"
         } catch (error) {
             alert('Error registrando libro');
         }
@@ -32,6 +32,7 @@ const RegisterBook = ({ onFixChange }) => {
                     value={bookData.titulo}
                     onChange={handleChange}
                     placeholder="Título"
+                    onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <input
                     type="text"
@@ -39,12 +40,14 @@ const RegisterBook = ({ onFixChange }) => {
                     value={bookData.autor}
                     onChange={handleChange}
                     placeholder="Autor"
+                    onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <textarea
                     name="descripcion"
                     value={bookData.descripcion}
                     onChange={handleChange}
                     placeholder="Descripción"
+                    onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <input
                     type="text"
@@ -52,6 +55,7 @@ const RegisterBook = ({ onFixChange }) => {
                     value={bookData.imagen}
                     onChange={handleChange}
                     placeholder="URL de la imagen"
+                    onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
                 <button type="submit">Registrar Libro</button>
             </form>
