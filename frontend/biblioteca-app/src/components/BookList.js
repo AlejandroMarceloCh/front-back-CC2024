@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../styles/BookList.css';
 
 const BookList = () => {
     const [books, setBooks] = useState([]);
@@ -18,9 +19,12 @@ const BookList = () => {
     }, []);
 
     return (
-        <ul>
+        <ul className="book-list">
             {books.map((book) => (
-                <li key={book.id}>{book.titulo}</li>
+                <li key={book.id}>
+                    <span className="book-title">{book.titulo}</span>
+                    <span className="book-author">by {book.autor}</span>
+                </li>
             ))}
         </ul>
     );

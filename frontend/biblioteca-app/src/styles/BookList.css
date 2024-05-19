@@ -1,0 +1,24 @@
+/* BookList.css */
+.book-list {
+    list-style: none;
+    padding: 0;
+}
+
+.book-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.book-list li:last-child {
+    border-bottom: none;
+}
+
+.book-title {
+    font-weight: bold;
+}
+
+.book-author {
+    color: #555;
+}

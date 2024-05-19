@@ -1,64 +1,87 @@
 import React, { useState } from 'react';
-import { registerBook } from '../api';
+import { registerUser } from '../api';
+import '../styles/UserRegistration.css';
 
-const RegisterBookForm = () => {
-    const [titulo, setTitulo] = useState('');
-    const [autor, setAutor] = useState('');
-    const [descripcion, setDescripcion] = useState('');
-    const [imagen, setImagen] = useState('');
+const UserRegistration = () => {
+    const [userData, setUserData] = useState({
+        username: '',
+        nombre: '',
+        sexo: '',
+        correo: '',
+        fecha_nacimiento: '',
+        direccion: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUserData({ ...userData, [name]: value });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const bookData = { titulo, autor, descripcion, imagen };
-            await registerBook(bookData);
-            alert('Libro registrado exitosamente');
-            setTitulo('');
-            setAutor('');
-            setDescripcion('');
-            setImagen('');
+            await registerUser(userData);
+            alert('User registered successfully!');
         } catch (error) {
-            console.error('Error registrando libro:', error);
-            alert('Error registrando libro');
+            alert('Error registering user');
         }
     };
 
     return (
-        <div>
-            <h1>Registrar Libro</h1>
+        <div className="user-registration">
+            <h2>Register User</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    value={titulo}
-                    onChange={(e) => setTitulo(e.target.value)}
-                    placeholder="Título"
+                    name="username"
+                    value={userData.username}
+                    onChange={handleChange}
+                    placeholder="Username"
                     required
                 />
                 <input
                     type="text"
-                    value={autor}
-                    onChange={(e) => setAutor(e.target.value)}
-                    placeholder="Autor"
+                    name="nombre"
+                    value={userData.nombre}
+                    onChange={handleChange}
+                    placeholder="Name"
                     required
                 />
                 <input
                     type="text"
-                    value={descripcion}
-                    onChange={(e) => setDescripcion(e.target.value)}
-                    placeholder="Descripción"
+                    name="sexo"
+                    value={userData.sexo}
+                    onChange={handleChange}
+                    placeholder="Gender"
+                    required
+                />
+                <input
+                    type="email"
+                    name="correo"
+                    value={userData.correo}
+                    onChange={handleChange}
+                    placeholder="Email"
+                    required
+                />
+                <input
+                    type="date"
+                    name="fecha_nacimiento"
+                    value={userData.fecha_nacimiento}
+                    onChange={handleChange}
                     required
                 />
                 <input
                     type="text"
-                    value={imagen}
-                    onChange={(e) => setImagen(e.target.value)}
-                    placeholder="URL de la imagen"
+                    name="direccion"
+                    value={userData.direccion}
+                    onChange={handleChange}
+                    placeholder="Address"
                     required
                 />
-                <button type="submit">Registrar</button>
+                <button type="submit">Register</button>
             </form>
         </div>
     );
 };
 
-export default RegisterBookForm;
+export default UserRegistration;

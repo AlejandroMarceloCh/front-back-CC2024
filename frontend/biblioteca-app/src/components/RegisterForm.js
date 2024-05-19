@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { registerUser } from '../api';
+import '../styles/UserRegistration.css';
 
-const RegisterForm = () => {
+const UserRegistration = () => {
     const [formData, setFormData] = useState({
         username: '',
         nombre: '',
@@ -12,10 +13,9 @@ const RegisterForm = () => {
     });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
         setFormData({
             ...formData,
-            [name]: value
+            [e.target.name]: e.target.value
         });
     };
 
@@ -30,17 +30,37 @@ const RegisterForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>Register</h1>
-            <input name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
-            <input name="nombre" value={formData.nombre} onChange={handleChange} placeholder="Nombre" />
-            <input name="sexo" value={formData.sexo} onChange={handleChange} placeholder="Sexo" />
-            <input name="correo" value={formData.correo} onChange={handleChange} placeholder="Correo" />
-            <input name="fecha_nacimiento" value={formData.fecha_nacimiento} onChange={handleChange} placeholder="Fecha de Nacimiento" />
-            <input name="direccion" value={formData.direccion} onChange={handleChange} placeholder="Direccion" />
-            <button type="submit">Register</button>
-        </form>
+        <div className="user-registration">
+            <h2>Register User</h2>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Username:
+                    <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                </label>
+                <label>
+                    Nombre:
+                    <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} />
+                </label>
+                <label>
+                    Sexo:
+                    <input type="text" name="sexo" value={formData.sexo} onChange={handleChange} />
+                </label>
+                <label>
+                    Correo:
+                    <input type="email" name="correo" value={formData.correo} onChange={handleChange} />
+                </label>
+                <label>
+                    Fecha de Nacimiento:
+                    <input type="date" name="fecha_nacimiento" value={formData.fecha_nacimiento} onChange={handleChange} />
+                </label>
+                <label>
+                    Dirección:
+                    <input type="text" name="direccion" value={formData.direccion} onChange={handleChange} />
+                </label>
+                <button type="submit">Register</button>
+            </form>
+        </div>
     );
 };
 
-export default RegisterForm;
+export default UserRegistration;
