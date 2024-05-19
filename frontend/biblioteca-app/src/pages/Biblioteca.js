@@ -38,13 +38,6 @@ const Biblioteca = () => {
                 >
                     <BookList />
                 </LibraryOption>
-                <LibraryOption
-                    imageSrc="/images/RegisterUser.jpg"  // Usa la imagen correspondiente
-                    flipped={fixedOption === 'registerUser'}
-                    onFlip={() => handleFlip('registerUser')}
-                >
-                    <RegisterUser onFixChange={(fix) => setFixedOption(fix ? 'registerUser' : null)} />
-                </LibraryOption>
             </div>
         </div>
     );
