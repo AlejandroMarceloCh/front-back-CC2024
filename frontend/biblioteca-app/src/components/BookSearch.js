@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { searchBooks } from '../api/api';
 import '../styles/BookSearch.css';
 
-const BookSearch = () => {
+const BookSearch = ({ onFixChange }) => {
     const [query, setQuery] = useState('');
     const [books, setBooks] = useState([]);
 
@@ -11,7 +11,7 @@ const BookSearch = () => {
             const response = await searchBooks(query);
             setBooks(response.data.libros);
         } catch (error) {
-            alert('Error searching books');
+            alert('Error buscando libros');
         }
     };
 
@@ -22,6 +22,7 @@ const BookSearch = () => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Buscar libros por título"
+                onFocus={() => onFixChange(true)} // Activar el modo "fijo"
             />
             <button onClick={handleSearch}>Buscar</button>
             <ul className="book-search-results">

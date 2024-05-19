@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { registerBook } from '../api/api';
 import '../styles/RegisterBook.css';
 
-const RegisterBook = () => {
+const RegisterBook = ({ onFixChange }) => {
     const [bookData, setBookData] = useState({ titulo: '', autor: '', descripcion: '', imagen: '' });
     const [message, setMessage] = useState('');
 
@@ -17,6 +17,7 @@ const RegisterBook = () => {
             await registerBook(bookData);
             setMessage('Libro registrado exitosamente');
             setBookData({ titulo: '', autor: '', descripcion: '', imagen: '' });
+            onFixChange(false); 
         } catch (error) {
             alert('Error registrando libro');
         }

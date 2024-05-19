@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import '../styles/LibraryOption.css';
 
-const LibraryOption = ({ imageSrc, children }) => {
+const LibraryOption = ({ imageSrc, children, isFixed, onFixChange }) => {
     const [flipped, setFlipped] = useState(false);
 
     const handleClick = () => {
-        setFlipped(!flipped);
+        if (!isFixed) {
+            setFlipped(!flipped);
+        }
     };
 
     return (
@@ -14,8 +16,13 @@ const LibraryOption = ({ imageSrc, children }) => {
                 <div className="library-option-front">
                     <img src={imageSrc} alt="Library Option" />
                 </div>
-                <div className="library-option-back">
+                <div className="library-option-back" onClick={(e) => e.stopPropagation()}>
                     {children}
+                    {isFixed && (
+                        <button className="flip-back-button" onClick={() => onFixChange(false)}>
+                            Voltear
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
