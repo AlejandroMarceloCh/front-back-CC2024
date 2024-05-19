@@ -1,24 +1,24 @@
 .navbar {
-    background-color: #333;
-    padding: 10px 20px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    background: linear-gradient(135deg, #333, #444);
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.navbar a {
-    color: white;
+.nav-link {
+    color: #ddd;
     text-decoration: none;
-    padding: 10px 15px;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.nav-link:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar a:hover {
-    background-color: #555;
-}
-
-.navbar a.active {
-    background-color: #007bff;
-    color: white;
 }

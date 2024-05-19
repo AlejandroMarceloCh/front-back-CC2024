@@ -90,14 +90,6 @@ const RegisterUser = ({ onFixChange }) => {
                     placeholder="Dirección"
                     onFocus={() => onFixChange(true)} // Activar el modo "fijo"
                 />
-                <input
-                    type="password"
-                    name="contrasena"
-                    value={userData.contrasena}
-                    onChange={handleChange}
-                    placeholder="Contraseña"
-                    onFocus={() => onFixChange(true)} // Activar el modo "fijo"
-                />
                 <button type="submit">Registrar Usuario</button>
             </form>
             {message && <div className="register-message">{message}</div>}

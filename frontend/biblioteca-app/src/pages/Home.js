@@ -1,9 +1,10 @@
 import React from 'react';
+import '../styles/Home.css';
 
 const Home = () => {
     return (
-        <div>
-            <h1>Bienvenido a la Biblioteca UTEC</h1>
+        <div className="home-container">
+            <h1>BIENVENIDO A DS BOOKCENTER</h1>
             <p>Utiliza la barra de navegación para acceder a las diferentes secciones.</p>
         </div>
     );
