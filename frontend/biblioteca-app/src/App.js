@@ -1,24 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Biblioteca from './pages/Biblioteca';
+import Prestamos from './pages/Prestamos'; // Asegúrate de tener esta página también
+import Usuarios from './pages/Usuarios';
 import './styles/App.css';
 
 const App = () => {
     return (
         <Router>
-            <div className="app">
-                <nav className="navbar">
-                    <Link to="/">Home</Link>
-                    <Link to="/biblioteca">Biblioteca</Link>
-                    <Link to="/prestamos">Préstamos</Link>
-                    <Link to="/usuarios">Usuarios</Link>
-                </nav>
-                <Switch>
-                    <Route path="/" exact component={() => <h1>DS BOOKCENTER</h1>} />
-                    <Route path="/biblioteca" component={Biblioteca} />
-                    {/* Aquí irán las otras rutas de Préstamos y Usuarios */}
-                </Switch>
-            </div>
+            <Navbar />
+            <Switch>
+                <Route path="/" exact component={Home} /> {/* Crea un componente Home si no lo tienes */}
+                <Route path="/biblioteca" component={Biblioteca} />
+                <Route path="/prestamos" component={Prestamos} />
+                <Route path="/usuarios" component={Usuarios} />
+            </Switch>
         </Router>
     );
 };
